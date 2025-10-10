@@ -1,0 +1,65 @@
+{
+  "name": "@hoajs/jwt",
+  "version": "0.1.0",
+  "description": "JSON Web Token(JWT) middleware for Hoa.",
+  "main": "./dist/cjs/jwt.js",
+  "type": "module",
+  "module": "./dist/esm/jwt.js",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/esm/jwt.js",
+      "require": "./dist/cjs/jwt.js",
+      "default": "./dist/esm/jwt.js"
+    }
+  },
+  "files": [
+    "dist",
+    "types",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "build": "tsup",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
+    "prepare": "husky"
+  },
+  "author": "nswbmw",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoa-js/jwt.git"
+  },
+  "keywords": [
+    "hoa",
+    "middleware",
+    "jsonwebtoken",
+    "jwt",
+    "jws",
+    "jwe",
+    "jwk",
+    "jwks"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "20.1.0",
+    "@commitlint/config-conventional": "20.0.0",
+    "eslint": "9.37.0",
+    "globals": "16.4.0",
+    "hoa": "*",
+    "husky": "9.1.7",
+    "jest": "30.2.0",
+    "neostandard": "0.12.2",
+    "tsup": "8.5.0"
+  },
+  "peerDependencies": {
+    "hoa": "*"
+  },
+  "dependencies": {
+    "jose": "6.1.0"
+  },
+    "engines": {
+    "node": ">=20"
+  }
+}
