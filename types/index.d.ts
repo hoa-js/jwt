@@ -1,4 +1,4 @@
-import type { HoaContext } from 'hoa'
+import type { HoaContext, HoaMiddleware } from 'hoa'
 import type { KeyLike, JWTPayload, JWSHeaderParameters } from 'jose'
 
 export type JWTGetToken = (ctx: HoaContext) => string | null | undefined | Promise<string | null | undefined>
@@ -24,9 +24,7 @@ export interface JWTOptions {
   jwksUri?: string
 }
 
-export type JwtMiddleware = (ctx: HoaContext, next: () => Promise<void>) => Promise<void>
-
-export function jwt(options?: JWTOptions): JwtMiddleware
+export function jwt(options?: JWTOptions): HoaMiddleware
 
 export function signJWT(
   payload: JWTPayload,

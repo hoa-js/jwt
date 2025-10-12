@@ -18,7 +18,7 @@ import { jwtVerify, createRemoteJWKSet, SignJWT, importSPKI, importPKCS8 } from 
  * @property {string} [cookie] - Cookie name to read token from if Authorization header is absent
  * @property {string} [key] - ctx.state key to store verified payload, default 'user'
  * @property {boolean} [credentialsRequired] - If true, missing token throws 401; default true
- * @property {boolean} [passthrough] - If true, do not throw on error; continue to next()
+ * @property {boolean} [passthrough] - If true, do not throw on error; continue to next(). default false
  * @property {(ctx: HoaContext, payload: any) => boolean | Promise<boolean>} [isRevoked] - Optional revocation check
  * @property {string | string[]} [issuer] - Expected issuer claim(s)
  * @property {string | string[]} [audience] - Expected audience claim(s)
