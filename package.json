@@ -1,6 +1,6 @@
 {
   "name": "@hoajs/jwt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JSON Web Token(JWT) middleware for Hoa.",
   "main": "./dist/cjs/jwt.js",
   "type": "module",
