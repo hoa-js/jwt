@@ -363,6 +363,19 @@ describe('JWT Middleware - Authentication & Authorization', () => {
 
     await closeServer(server)
   })
+
+  it.each([true, false])('should not retry a failing authenticated handler with passthrough=%s', async (passthrough) => {
+    const secret = 'audit-test-secret'
+    const token = await signJWT({}, secret)
+    const app = new Hoa()
+    app.silent = true
+    let calls = 0
+    app.use(jwt({ secret, passthrough }))
+    app.use(() => { calls++; throw new Error('downstream') })
+    const response = await app.fetch(new Request('https://example.com/', { headers: { Authorization: `Bearer ${token}` } }))
+    expect(response.status).toBe(500)
+    expect(calls).toBe(1)
+  })
 })
 
 describe('JWT Middleware - WWW-Authenticate Header', () => {

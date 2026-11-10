@@ -96,14 +96,13 @@ export function jwt (options = {}) {
       // Attach to state
       ctx.state[key] = payload
       ctx.state.jwt = { token, header: protectedHeader, payload }
-
-      await next()
     } catch (err) {
       if (passthrough) {
         return next()
       }
       throw err
     }
+    await next()
   }
 }
 
